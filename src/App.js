@@ -3,6 +3,7 @@ import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
+import { List } from 'material-ui/List';
 
 import GifImage from './components/GifImage';
 import GifList from './components/GifList';
@@ -17,6 +18,23 @@ class App extends Component {
     };
     this.changeHost = this.changeHost.bind(this);
     this.changePort = this.changePort.bind(this);
+  }
+  getGifs() {
+    return [
+      {
+        _id: 0,
+        filename: "0.gif"
+      },
+      {
+        _id: 1,
+        filename: "1.gif"
+      }
+    ]
+  }
+  renderGifs() {
+    return this.getGifs().map((gifImage) => (
+      <GifList key={gifImage._id} filename={gifImage.filename} />
+    ))
   }
   submit = (e) => {
     e.preventDefault();
@@ -45,7 +63,11 @@ class App extends Component {
               showMenuIconButton={false} />
             <div className="row">
               <div className="col s12 m7"><GifImage /></div>
-              <div className="col s12 m5"><GifList /></div>
+              <div className="col s12 m5">
+                <List>
+                  {this.renderGifs()}
+                </List>
+                </div>
             </div>
           </div>
         </MuiThemeProvider>
