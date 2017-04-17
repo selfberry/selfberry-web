@@ -19,7 +19,7 @@ export default class GifImage extends Component {
     return (
       <Card className="App-header">
         <CardMedia overlay={<CardTitle title="0.gif" subtitle="gif" />} >
-          <img src="img/gif/0.gif" className="App-gif" alt="gif" />
+          <img src="0.gif" className="App-gif" alt="gif" />
         </CardMedia>
         <CardText>
           <div style={styles.wrapper}>

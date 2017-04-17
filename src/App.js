@@ -19,23 +19,7 @@ class App extends Component {
     this.changeHost = this.changeHost.bind(this);
     this.changePort = this.changePort.bind(this);
   }
-  getGifs() {
-    return [
-      {
-        _id: 0,
-        filename: "0.gif"
-      },
-      {
-        _id: 1,
-        filename: "1.gif"
-      }
-    ]
-  }
-  renderGifs() {
-    return this.getGifs().map((gifImage) => (
-      <GifList key={gifImage._id} filename={gifImage.filename} />
-    ))
-  }
+
   submit = (e) => {
     e.preventDefault();
     console.log('h:' + this.state.wshost + ' p:'+this.state.wsport);
@@ -53,6 +37,23 @@ class App extends Component {
     this.setState({wsport: e.target.value});
     console.log('h:'+this.state.wsport);
   }
+  getGifs() {
+    return [
+      {
+        _id: 0,
+        filename: "gif/0.gif"
+      },
+      {
+        _id: 1,
+        filename: "gif/1.gif"
+      }
+    ]
+  }
+  renderGifs() {
+    return this.getGifs().map((gifImage) => (
+      <GifList key={gifImage._id} filename={gifImage.filename} />
+    ))
+  }
   render() {
     return (
         <MuiThemeProvider  muiTheme={getMuiTheme(darkBaseTheme)}>
@@ -61,9 +62,8 @@ class App extends Component {
               title="selfberry" 
               iconClassNameRight="muidocs-icon-navigation-expand-more" 
               showMenuIconButton={false} />
-            <div className="row">
-              <div className="col s12 m7"><GifImage /></div>
-              <div className="col s12 m5">
+            <div className="row">            
+              <div className="col s4 ">
                 <List>
                   {this.renderGifs()}
                 </List>
